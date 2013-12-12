@@ -11,6 +11,9 @@ def file_hash(fname, hash_name):
                 return md5.hexdigest()
             md5.update(data)
 existing_hashes = [line.strip().split()[0] for line in open(argv[1])]
+
+verbose = True
+
 if len(argv) > 2:
     hash_name = argv[2]
 
@@ -18,6 +21,9 @@ for dirpath,_,files in walk('.'):
     for f in files:
         f = path.join(dirpath, f)
         m = file_hash(f, hash_name)
+        op = 'keep'
         if m in existing_hashes:
             unlink(f)
-            print(f)
+            op = 'rm'
+        if verbose:
+            print("{} {}".format(op, f))
