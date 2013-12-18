@@ -20,6 +20,8 @@ if len(argv) > 2:
 for dirpath,_,files in walk('.'):
     for f in files:
         f = path.join(dirpath, f)
+        if path.islink(f):
+            continue
         m = file_hash(f, hash_name)
         op = 'keep'
         if m in existing_hashes:
