@@ -17,7 +17,11 @@ verbose = True
 if len(argv) > 2:
     hash_name = argv[2]
 
-for dirpath,_,files in walk('.'):
+for dirpath,dirs,files in walk('.'):
+    try:
+        dirs.remove('.git')
+    except ValueError:
+        pass
     for f in files:
         f = path.join(dirpath, f)
         if path.islink(f):
