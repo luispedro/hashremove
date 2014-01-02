@@ -1,6 +1,6 @@
 from sys import argv
 from os import path, walk, unlink
-hash_name = 'md5'
+hash_name = 'sha256'
 def file_hash(fname, hash_name):
     import hashlib
     md5 = hashlib.new(hash_name)
