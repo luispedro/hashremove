@@ -1,11 +1,8 @@
-from os import readlink, path, walk
-for root,dirs,fs in walk('.'):
-    if '.git' in dirs:
-        dirs.remove('.git')
-    for f in fs:
-        f = path.join(root,f)
-        if path.islink(f):
-            link = readlink(f)
-            if '.git/annex/objects/' in link:
-                link,_= path.splitext(link)
-                print link[-256/4:]
+import os
+import re
+from os import path
+for line in os.popen("git ls-tree git-annex --full-tree -r"):
+    tokens = line.split()
+    m = re.search('^SHA256E-[^-]+--([0-9a-f]+)\..*\.log$', path.basename(tokens[-1]))
+    if m:
+        print m.group(1)
