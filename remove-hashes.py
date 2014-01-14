@@ -24,7 +24,7 @@ for dirpath,dirs,files in walk('.'):
         pass
     for f in files:
         f = path.join(dirpath, f)
-        if path.islink(f):
+        if not path.isfile(f):
             continue
         m = file_hash(f, hash_name)
         op = 'keep'
