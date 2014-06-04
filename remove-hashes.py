@@ -3,13 +3,13 @@ from os import path, walk, unlink
 hash_name = 'sha256'
 def file_hash(fname, hash_name):
     import hashlib
-    md5 = hashlib.new(hash_name)
+    h = hashlib.new(hash_name)
     with open(fname) as f:
         while True:
             data = f.read(1024*1024)
             if not len(data):
-                return md5.hexdigest()
-            md5.update(data)
+                return h.hexdigest()
+            h.update(data)
 existing_hashes = [line.strip().split()[0] for line in open(argv[1])]
 
 verbose = True

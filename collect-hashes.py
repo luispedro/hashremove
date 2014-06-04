@@ -1,6 +1,6 @@
 from sys import argv
 from os import path, walk
-hash_name = 'md5'
+hash_name = 'sha256'
 if len(argv) > 1:
     hash_name = argv[1]
 def file_hash(fname, hash_name):
