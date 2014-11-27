@@ -1,15 +1,8 @@
 from sys import argv
 from os import path, walk, unlink
+from hashfile import file_hash
+
 hash_name = 'sha256'
-def file_hash(fname, hash_name):
-    import hashlib
-    h = hashlib.new(hash_name)
-    with open(fname) as f:
-        while True:
-            data = f.read(1024*1024)
-            if not len(data):
-                return h.hexdigest()
-            h.update(data)
 if len(argv) < 2:
     import sys
     sys.stderr.write("python {} HASH-FILE [HASH]\n".format(argv[0]))
