@@ -18,5 +18,5 @@ for dirpath,_,files in walk('.'):
         f = path.join(dirpath, f)
         h = file_hash(f, hash_name)
         if h not in seen:
-            print h
+            print(h)
             seen.add(h)
