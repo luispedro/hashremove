@@ -7,7 +7,7 @@ if len(argv) < 2:
     import sys
     sys.stderr.write("python {} HASH-FILE [HASH]\n".format(argv[0]))
     sys.exit(1)
-existing_hashes = [line.strip().split()[0] for line in open(argv[1])]
+existing_hashes = set([line.strip().split()[0] for line in open(argv[1])])
 
 verbose = True
 
