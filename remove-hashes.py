@@ -14,9 +14,9 @@ verbose = True
 if len(argv) > 2:
     hash_name = argv[2]
 
-for dirpath,dirs,files in walk('.'):
+for dirpath,dirs,files in walk(b'.'):
     try:
-        dirs.remove('.git')
+        dirs.remove(b'.git')
     except ValueError:
         pass
     for f in files:
