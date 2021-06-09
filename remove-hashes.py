@@ -19,7 +19,7 @@ for dirpath,dirs,files in walk(b'.'):
         dirs.remove(b'.git')
     except ValueError:
         pass
-    for f in files:
+    for f in sorted(files):
         f = path.join(dirpath, f)
         if not path.isfile(f):
             continue
